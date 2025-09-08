@@ -146,19 +146,26 @@ h6 {
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
-.header {
-  color: var(--default-color);
-  background-color: var(--background-color);
+#header {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 0 15px;
+  /* --- MODIFIKASI DIMULAI --- */
+  top: 50%;                  /* Posisikan 50% dari atas layar */
+  transform: translateY(-50%); /* Geser ke atas sebesar 50% dari tinggi elemen itu sendiri */
+  left: 20px;
+  /* --- MODIFIKASI SELESAI --- */
+
   width: 300px;
-  transition: all ease-in-out 0.3s;
+  height: auto;
+  background: rgba(4, 11, 20, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: all ease-in-out 0.5s;
+  z-index: 9997;
+  padding: 15px;
   overflow-y: auto;
-  z-index: 997;
-  border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .header .profile-img img {
@@ -213,41 +220,54 @@ h6 {
 
   .header~main,
   .header~#footer {
-    margin-left: 300px;
+    margin-left: 340px;
   }
 }
 
 @media (max-width: 1199px) {
-  .header {
-    left: -100%;
+
+  #header {
+      top: 0;
+      left: 0;
+      right: 0; /* Membuat lebar header penuh */
+      width: auto;
+      height: 70px; /* Tinggi navbar */
+      border-radius: 0; /* Menghilangkan sudut tumpul */
+      transform: none; /* Menghapus posisi vertikal tengah */
+      padding: 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   }
-}
 
-.header.header-show {
-  left: 0;
-}
+  /* 2. Sembunyikan foto profil dan nama di navbar */
+  #header .profile-img, .sitename, .social-links {
+      display: none;
+  }
 
-.header .header-toggle {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 9999;
-  transition: background-color 0.3s;
-}
+  /* 3. Membuat menu navigasi menjadi horizontal */
+  #header .nav-menu ul {
+      display: flex;
+      justify-content: center; /* Posisi menu di tengah */
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      height: 100%; /* Agar tinggi menu sama dengan navbar */
+  }
 
-.header .header-toggle:hover {
-  color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+  #header .nav-menu a {
+      padding: 10px 15px; /* Atur jarak antar menu */
+  }
+
+  /* 4. Sembunyikan tombol hamburger menu */
+  .mobile-nav-toggle {
+      display: none;
+  }
+
+  /* 5. Beri jarak pada konten utama dari navbar */
+  #main {
+      padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+  }
+
 }
 
 /*--------------------------------------------------------------
@@ -550,11 +570,10 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 80px 100px;
+  padding: 80px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1c1c1c;
 }
 
 /* .hero img {
@@ -696,40 +715,6 @@ section,
 --------------------------------------------------------------*/
 .skills {
   padding: 50px 40px;
-}
-
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
-}
-
-.skills .progress .skill {
-  color: var(--heading-color);
-  padding: 0;
-  margin: 0 0 6px 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-}
-
-.skills .progress-bar-wrap {
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  height: 10px;
-}
-
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background-color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
