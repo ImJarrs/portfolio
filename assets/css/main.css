@@ -22,7 +22,7 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #050d18; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #fa4949; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -91,58 +91,6 @@ h6 {
   font-family: var(--heading-font);
 }
 
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
-}
-
-@keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -151,7 +99,7 @@ h6 {
   /* --- MODIFIKASI DIMULAI --- */
   top: 50%;                  /* Posisikan 50% dari atas layar */
   transform: translateY(-50%); /* Geser ke atas sebesar 50% dari tinggi elemen itu sendiri */
-  left: 20px;
+  left: 30px;
   /* --- MODIFIKASI SELESAI --- */
 
   width: 300px;
@@ -216,26 +164,22 @@ h6 {
   background: var(--accent-color);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 801px) {
 
   .header~main,
   .header~#footer {
     margin-left: 340px;
   }
+
+  .mobile-nav {
+    display: none;
+  }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 800px) {
 
   #header {
-      top: 0;
-      left: 0;
-      right: 0; /* Membuat lebar header penuh */
-      width: auto;
-      height: 70px; /* Tinggi navbar */
-      border-radius: 0; /* Menghilangkan sudut tumpul */
-      transform: none; /* Menghapus posisi vertikal tengah */
-      padding: 0;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    display: none !important;
   }
 
   /* 2. Sembunyikan foto profil dan nama di navbar */
@@ -271,7 +215,7 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Navigation Menu
+# Navigation Menu (Sidebar Desktop)
 --------------------------------------------------------------*/
 .mobile-nav-toggle {
   display: none;
@@ -288,102 +232,93 @@ h6 {
   margin: 0;
 }
 
-.navmenu a,
-.navmenu a:focus {
+.navmenu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--nav-color);
   padding: 15px 10px;
   font-family: var(--nav-font);
   font-size: 16px;
   font-weight: 400;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
   transition: 0.3s;
   width: 100%;
 }
 
-.navmenu a .navicon,
-.navmenu a:focus .navicon {
+.navmenu a .navicon {
   font-size: 20px;
   margin-right: 10px;
-}
-
-.navmenu a .toggle-dropdown,
-.navmenu a:focus .toggle-dropdown {
-  font-size: 12px;
-  line-height: 0;
-  margin-left: auto;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: 0.3s;
-  flex-shrink: 0;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-}
-
-.navmenu a .toggle-dropdown:hover,
-.navmenu a:focus .toggle-dropdown:hover {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
+  min-width: 20px;
+  text-align: center;
+  line-height: 1;
 }
 
 .navmenu a:hover,
-.navmenu .active,
-.navmenu .active:focus {
+.navmenu .active {
   color: var(--nav-hover-color);
 }
 
 .navmenu a:hover .navicon,
-.navmenu .active .navicon,
-.navmenu .active:focus .navicon {
+.navmenu .active .navicon {
   color: var(--accent-color);
 }
 
-.navmenu .active .toggle-dropdown,
-.navmenu .active:focus .toggle-dropdown {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  transform: rotate(180deg);
+/*--------------------------------------------------------------
+# Mobile Bottom Nav (Floating)
+--------------------------------------------------------------*/
+.mobile-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1050;
 }
 
-.navmenu .dropdown {
-  display: block;
+.mobile-nav ul {
+  display: flex;
+  flex-direction: row;    /* sejajar samping */
+  justify-content: center;
+  align-items: center;
+  gap: 5px;              /* jarak antar menu */
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.navmenu .dropdown a,
-.navmenu .dropdown a:focus {
-  color: --nav-dropdown-color;
+.mobile-nav .nav-item {
+  flex: 0 0 auto;         /* jangan sampai melar ke bawah */
 }
 
-.navmenu .dropdown a:hover,
-.navmenu .dropdown .active,
-.navmenu .dropdown .active:focus {
-  color: var(--nav-dropdown-hover-color);
+.mobile-nav .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s;
+  color: #555;
+  white-space: nowrap;    /* cegah teks turun */
 }
 
-.navmenu .dropdown ul {
-  position: static;
-  display: none;
-  z-index: 99;
-  padding: 5px 10px;
-  margin: 5px 10px;
-  background-color: var(--nav-dropdown-background-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  box-shadow: none;
-  transition: all 0.5s ease-in-out;
+.mobile-nav .nav-link.active {
+  background: #e6f6ff;
+  color: #0d6efd;
 }
 
-.navmenu .dropdown ul ul {
-  background-color: rgba(33, 37, 41, 0.1);
+/* Sembunyikan sidebar di mobile */
+@media (max-width: 800px) {
+  #header {
+    display: none !important;
+  }
 }
 
-.navmenu .dropdown>.dropdown-active {
-  display: block;
-  background-color: rgba(33, 37, 41, 0.03);
-}
+
 
 /*--------------------------------------------------------------
 # Global Footer
@@ -570,21 +505,11 @@ section,
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 80px 40px;
+  padding: 80px 8%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* .hero img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-} */
 
 .hero:before {
   content: "";
@@ -597,22 +522,24 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+  color: #6a6a6a;
 }
 
 .hero h2 {
   margin: 0;
-  font-size: 64px;
+  font-size: 55px;
   font-weight: 700;
 }
 
 .hero p {
-  margin: 5px 0 0 0;
-  font-size: 26px;
+  margin: 70px 0 50px 0;
+  font-size: 18px;
 }
 
-.hero p span {
-  letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color);
+.hero i {
+  font-size: 32px;
+  color: rgb(96, 96, 96);
+  margin: 0 20px 0 0;
 }
 
 .hero .social-links {
@@ -647,34 +574,34 @@ section,
 --------------------------------------------------------------*/
 
 .about {
-  padding: 50px 40px;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .container {
+  position: relative;
+  z-index: 3;
+  color: #6a6a6a;
+}
+
+.about h2 {
+  margin: 0 0 70px 0;
+  font-size: 55px;
+  font-weight: 700;
+}
+
+.about p {
+  font-size: 16px;
 }
 
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.about .content ul strong {
-  margin-right: 10px;
-}
-
-.about .content ul i {
-  font-size: 16px;
-  margin-right: 5px;
-  color: var(--accent-color);
-  line-height: 0;
 }
 
 /*--------------------------------------------------------------
@@ -1051,13 +978,14 @@ section,
 # Contact Section
 --------------------------------------------------------------*/
 .contact {
-  padding: 50px 40px;
+  padding: 50px 8%;
 }
 
 .contact .info-wrap {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  border-radius: 15px;
 }
 
 @media (max-width: 575px) {
