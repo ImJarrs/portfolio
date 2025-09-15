@@ -4079,19 +4079,34 @@ section, .section {
   margin: 70px 0 50px 0;
   font-size: 18px;
 }
-
+.hero i {
+  font-size: 32px;
+  color: rgb(96, 96, 96);
+  margin: 0 20px 0 0;
+}
 .hero .social-links {
   margin-top: 25px;
 }
+/* .hero .social-links a {
+  font-size: 24px;
+  display: inline-block;
+  color: var(--default-color);
+
+  @supports (color: color-mix(in lab, red, red)) {
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+  }
+  line-height: 1;
+  margin-right: 20px;
+  transition: 0.3s;
+} */
 
 .hero .social-links a {
-  font-size: 32px;
-  font-weight: 500;
+  font-size: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--contrast-color);
-  margin: 0 10px;
+  color: var(--accent-color);
+  margin: 0 3px;
   text-align: center;
   border-radius: 50%;
   width: 31px;

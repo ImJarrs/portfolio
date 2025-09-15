@@ -8,6 +8,6 @@
     "daisyui": "^5.1.12"
   },
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i assets/css/main.css -o assets/css/app.css"
+    "build:css": "npx @tailwindcss/cli -i assets/css/app.css -o assets/css/backup.css"
   }
 }
