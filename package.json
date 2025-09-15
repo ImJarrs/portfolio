@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "bootstrap-icons": "^1.13.1"
+    "@tailwindcss/cli": "^4.1.13",
+    "bootstrap-icons": "^1.13.1",
+    "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "daisyui": "^5.1.12"
+  },
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i assets/css/main.css -o assets/css/app.css"
   }
 }

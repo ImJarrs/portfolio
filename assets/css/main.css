@@ -6,6 +6,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@plugin "daisyui";
+
 /*--------------------------------------------------------------
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
@@ -56,6 +58,8 @@
 :root {
   scroll-behavior: smooth;
 }
+
+@import "tailwindcss";
 
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
@@ -567,6 +571,10 @@ section,
   .hero p {
     font-size: 20px;
   }
+
+  .hero {
+    top: 50px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -625,7 +633,11 @@ section,
 }
 
 .contact .info-item {
-  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.contact .info-item:last-child {
+  margin-bottom: 0;
 }
 
 .contact .info-item i {
@@ -651,7 +663,6 @@ section,
 
 .contact .info-item p {
   padding: 0;
-  margin-bottom: 0;
   font-size: 14px;
 }
 
@@ -660,53 +671,139 @@ section,
   color: var(--contrast-color);
 }
 
-.contact .php-email-form {
-  background-color: var(--surface-color);
-  height: 100%;
-  padding: 30px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio-details {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 575px) {
-  .contact .php-email-form {
-    padding: 20px;
+.portfolio-details .container {
+  position: relative;
+  z-index: 3;
+  color: #6a6a6a;
+}
+
+.portfolio-details h2 {
+  margin: 0 0 70px 0;
+  font-size: 55px;
+  font-weight: 700;
+}
+
+.portfolio-details p {
+  font-size: 16px;
+}
+
+.portfolio-details .content h2 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Styling for the portfolio list container */
+.portfolio-details .portfolio-details-info {
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(var(--default-color-rgb), 0.08);
+  border-radius: 8px;
+}
+
+/* Spacing and styling for the title of each portfolio item */
+.portfolio-details .portfolio-details-info h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--heading-color);
+}
+
+/* Styling for the date/duration paragraph */
+.portfolio-details .portfolio-details-info em {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* Styling for the description list */
+.portfolio-details .portfolio-details-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+}
+
+.portfolio-details .portfolio-details-info ul li {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: left;
+}
+
+.portfolio-details .portfolio-details-info ul li:last-child {
+  padding-bottom: 0;
+}
+
+
+/* Adds a bullet point icon before each list item */
+.portfolio-details .portfolio-details-info ul li i {
+  color: var(--accent-color);
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Margin for the portfolio images */
+/* .portfolio-details .portfolio-details-info img {
+  margin-bottom: 20px;
+  border-radius: 5px;
+} */
+
+
+.portfolio-details .mockup-browser {
+  margin-bottom: 25px;
+}
+
+/* Styling for section headers like "Work Experience" and "Projects" */
+.services-list .service-item {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.services-list .service-item h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+@media (max-width: 768px) {
+  .portfolio-details {
+    padding: 100px 0 0;
+  }
+
+  .portfolio-details .portfolio-details-info {
+    padding: 20px 0;
+  }
+
+  .portfolio-details .col-lg-12{
+    padding: 0;
+  }
+
+  .portfolio-details .container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .portfolio-details .container h2 {
+    margin: 20px;
+  }
+
+  .portfolio-details .container .description {
+    margin: 20px;
+  }
+
+  .portfolio-details .container .gy-4 {
+    margin: 0;
   }
 }
-
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
-.contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: var(--surface-color);
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
-}
-
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.contact .php-email-form button[type=submit] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
-  border-radius: 50px;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 25%);
-}
-
